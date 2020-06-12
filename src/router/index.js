@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Index from "../views/Index.vue";
+import Login from "../views/Login.vue";
+import Users from "../views/Users.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +20,19 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
+  {
+    path: "/users",
+    name: "Users",
+    component: Users,
+    meta: {
+      requiresAuth: true,
+    },
   },
 ];
 
