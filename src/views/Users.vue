@@ -1,9 +1,22 @@
 <template>
   <div>
     <h2>Users</h2>
-    <div v-bind:key="user.id" v-for="user in users">
-      <h4>{{ user.givenName }}</h4>
-    </div>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-bind:key="user.id" v-for="user in users">
+          <td>{{ user.givenName }}</td>
+          <td>
+            <a v-bind="user.id">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

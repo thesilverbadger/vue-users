@@ -1,20 +1,24 @@
 <template>
-  <div>
+  <div class>
     <h2>Login</h2>
     <form>
-      <label for="name">Name</label>
-      <div>
-        <input id="name" type="text" v-model="name" required autofocus />
+      <div class="form-group">
+        <label for="name">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="name"
+          name="name"
+          v-model="name"
+          autofocus
+          required
+        />
       </div>
-      <div>
-        <label for="password">Password</label>
-        <div>
-          <input id="key" type="password" v-model="key" required />
-        </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input class="form-control" id="key" type="password" v-model="key" required />
       </div>
-      <div>
-        <button type="submit" @click="handleSubmit">Login</button>
-      </div>
+      <button class="btn btn-primary" type="submit" @click="handleSubmit">Login</button>
     </form>
   </div>
 </template>
