@@ -12,7 +12,7 @@
         <tr v-bind:key="user.id" v-for="user in users">
           <td>{{ user.givenName }}</td>
           <td>
-            <a v-bind="user.id">Edit</a>
+            <a>Edit</a>
           </td>
         </tr>
       </tbody>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Axios from "axios";
+import dataservice from "../services/data.service";
 
 export default {
   name: "Users",
@@ -31,20 +31,8 @@ export default {
     };
   },
   methods: {},
-  created() {
-    const token = localStorage.getItem("jwt");
-    console.log(token);
-    Axios.get("https://localhost:5001/api/users", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        this.users = response.data;
-      })
-      .catch(function(error) {
-        console.error(error.response);
-      });
+  async created() {
+    this.users = await dataservice.get("api/users");
   }
 };
 </script>
