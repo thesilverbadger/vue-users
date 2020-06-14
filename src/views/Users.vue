@@ -4,15 +4,19 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr v-bind:key="user.id" v-for="user in users">
           <td>{{ user.givenName }}</td>
+          <td>{{ user.familyName }}</td>
+          <td>{{ user.email }}</td>
           <td>
-            <a>Edit</a>
+            <a href="#">Edit</a>
           </td>
         </tr>
       </tbody>
