@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Axios from "axios";
+import dataService from "../services/data.service";
 
 export default {
   name: "Login",
@@ -35,28 +35,24 @@ export default {
     };
   },
   methods: {
-    handleSubmit(e) {
+    async handleSubmit(e) {
       e.preventDefault();
       if (this.key.length > 0) {
-        Axios.post("https://localhost:5001/api/Authorization/token", {
+        const response = await dataService.post("api/Authorization/token", {
           clientName: this.name,
           key: this.key
-        })
-          .then(response => {
-            localStorage.setItem("jwt", response.data.token);
+        });
 
-            if (localStorage.getItem("jwt") != null) {
-              this.$emit("loggedIn");
-              if (this.$route.params.nextUrl != null) {
-                this.$router.push(this.$route.params.nextUrl);
-              } else {
-                this.$router.push("Users");
-              }
-            }
-          })
-          .catch(function(error) {
-            console.error(error.response);
-          });
+        localStorage.setItem("jwt", response.token);
+
+        if (localStorage.getItem("jwt") != null) {
+          this.$emit("loggedIn");
+          if (this.$route.params.nextUrl != null) {
+            this.$router.push(this.$route.params.nextUrl);
+          } else {
+            this.$router.push("Users");
+          }
+        }
       }
     }
   }
