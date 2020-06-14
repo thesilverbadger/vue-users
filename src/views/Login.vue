@@ -15,7 +15,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+        <label for="key">Password</label>
         <input class="form-control" id="key" type="password" v-model="key" required />
       </div>
       <button class="btn btn-primary" type="submit" @click="handleSubmit">Login</button>
