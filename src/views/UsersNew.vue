@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>New User</h2>
-    <form>
+    <form @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="email">Email address</label>
         <input
@@ -36,7 +36,7 @@
           required
         />
       </div>
-      <button class="btn btn-primary" type="submit" @click="handleSubmit">Save</button>
+      <button class="btn btn-primary" type="submit">Save</button>
     </form>
   </div>
 </template>
@@ -54,9 +54,7 @@ export default {
     };
   },
   methods: {
-    async handleSubmit(e) {
-      e.preventDefault();
-
+    async onSubmit() {
       const response = await dataService.post("api/users", {
         email: this.email,
         givenName: this.givenName,
