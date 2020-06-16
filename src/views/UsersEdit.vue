@@ -69,7 +69,6 @@ export default {
     }
   },
   async created() {
-    console.log(this.$route.params.id);
     const user = await dataService.get(`api/users/${this.$route.params.id}`);
     this.email = user.email;
     this.givenName = user.givenName;
