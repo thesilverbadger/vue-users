@@ -11,12 +11,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-bind:key="user.id" v-for="user in users">
+        <tr v-bind:key="user.id" v-bind:item="user" v-for="user in users">
           <td>{{ user.givenName }}</td>
           <td>{{ user.familyName }}</td>
           <td>{{ user.email }}</td>
           <td>
-            <a href="#">Edit</a>
+            <router-link :to="{ name: 'UsersEdit', params: { id: user.id } }">Edit</router-link>
           </td>
         </tr>
       </tbody>

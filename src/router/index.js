@@ -4,6 +4,7 @@ import Index from "../views/Index.vue";
 import Login from "../views/Login.vue";
 import Users from "../views/Users.vue";
 import UsersNew from "../views/UsersNew.vue";
+import UsersEdit from "../views/UsersEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,14 @@ const routes = [
     path: "/users/new",
     name: "UsersNew",
     component: UsersNew,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/users/edit/:id",
+    name: "UsersEdit",
+    component: UsersEdit,
     meta: {
       requiresAuth: true,
     },
