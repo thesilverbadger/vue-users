@@ -1,13 +1,14 @@
 import Axios from "axios";
 
+Axios.defaults.baseURL = "https://localhost:5001/";
+
+///TODO: Validate the token we've got
 const dataService = {
-  baseUrl: "https://localhost:5001/",
+  ///TODO: This should come from configuration
   async get(uri) {
     const token = localStorage.getItem("jwt");
-    const fullUri = this.baseUrl + uri;
-
     try {
-      const response = await Axios.get(fullUri, {
+      const response = await Axios.get(uri, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -20,10 +21,9 @@ const dataService = {
 
   async post(uri, data) {
     const token = localStorage.getItem("jwt");
-    const fullUri = this.baseUrl + uri;
 
     try {
-      const response = await Axios.post(fullUri, data, {
+      const response = await Axios.post(uri, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,10 +36,9 @@ const dataService = {
 
   async put(uri, data) {
     const token = localStorage.getItem("jwt");
-    const fullUri = this.baseUrl + uri;
 
     try {
-      const response = await Axios.put(fullUri, data, {
+      const response = await Axios.put(uri, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
