@@ -37,6 +37,7 @@
         />
       </div>
       <button class="btn btn-primary" type="submit">Save</button>
+      <router-link class="btn btn-link" :to="{ name: 'Users' }">Back</router-link>
     </form>
   </div>
 </template>
