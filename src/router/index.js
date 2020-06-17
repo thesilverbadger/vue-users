@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Index from "../views/Index.vue";
 import Login from "../views/Login.vue";
+import Logout from "../views/Logout.vue";
 import Users from "../views/Users.vue";
 import UsersNew from "../views/UsersNew.vue";
 import UsersEdit from "../views/UsersEdit.vue";
@@ -18,6 +19,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    component: Logout,
   },
   {
     path: "/users",

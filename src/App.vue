@@ -1,14 +1,30 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>&nbsp;|&nbsp;
-      <router-link to="/login">Login</router-link>&nbsp;|&nbsp;
-      <router-link to="/users">Users</router-link>&nbsp;|&nbsp;
-      <router-link to="/users/new">New User</router-link>
+      <router-link to="/">Home&nbsp;|&nbsp;</router-link>
+      <router-link v-if="!isAuthenticated" to="/login">Login&nbsp;|&nbsp;</router-link>
+      <router-link v-if="isAuthenticated" to="/logout">Logout&nbsp;|&nbsp;</router-link>
+      <router-link v-if="isAuthenticated" to="/users">Users&nbsp;|&nbsp;</router-link>
+      <router-link v-if="isAuthenticated" to="/users/new">New User</router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import UserService from "./services/user.service";
+export default {
+  name: "App",
+  data() {
+    return {
+      isAuthenticated: false
+    };
+  },
+  created() {
+    this.isAuthenticated = UserService.isUserAuthenticated();
+  }
+};
+</script>
 
 <style>
 #app {
