@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-bind:key="user.id" v-bind:item="user" v-for="user in users">
+        <tr v-bind:key="user.id" v-for="user in users">
           <td>{{ user.givenName }}</td>
           <td>{{ user.familyName }}</td>
           <td>{{ user.email }}</td>
