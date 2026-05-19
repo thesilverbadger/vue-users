@@ -1,13 +1,10 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import Index from "../views/Index.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Users from "../views/Users.vue";
 import UsersNew from "../views/UsersNew.vue";
 import UsersEdit from "../views/UsersEdit.vue";
-
-Vue.use(VueRouter);
 
 const routes = [
   {
@@ -51,7 +48,8 @@ const routes = [
   },
 ];
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHashHistory(),
   routes,
 });
 
